@@ -1,0 +1,27 @@
+.address {
+    display: flex;
+    flex-direction: column;
+}
+
+.App {
+    font-family: sans-serif;
+    text-align: center;
+}
+
+/* AddressForm.css */
+
+.address-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+.add-address-btn {
+    background-color: #28a745;
+}
