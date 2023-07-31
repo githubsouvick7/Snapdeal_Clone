@@ -11,7 +11,7 @@ const EmptyCart = () => {
                 <div className="text-empty">
                     <p>Your Cart is Empty !</p>
                     <NavLink to={'/allproduct'} style={{ textDecoration: "none" }}>
-                        <button className="custom-btn btn">Shop Now</button>
+                        <button style={{ width: "150px" }} className="button -salmon">Shop Now</button>
                     </NavLink>
                 </div>
             </div>

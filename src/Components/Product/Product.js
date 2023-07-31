@@ -41,6 +41,14 @@ const Product = () => {
 
 
     const ShowProduct = () => {
+        const added = (i) => {
+            addProduct(i);
+            toast.success("Added . . .", {
+                position: "top-center",
+                autoClose: 2000,
+                theme: "light",
+            })
+        }
         return (
             <>
                 <section className="comp-section" key={product.id}>
@@ -57,13 +65,30 @@ const Product = () => {
                             </div>
                             <div className="allbtn">
                                 {
-                                    isAuthenticated ? (<button
-                                        className='button -salmon'
-                                        onClick={() => addProduct(product)}
-                                    >
-                                        Add to Cart
-                                    </button>) : (
-                                        <button className='button -salmon'>
+                                    isAuthenticated ? (<>
+                                        {
+                                            state.some((i) => i.id === product.id) ? (
+                                                <NavLink style={{ textDecoration: "none" }} to={'/cart'}>
+                                                    <button className="button -salmon">
+                                                        Go to Cart <i class="fa-solid fa-xmark"></i>
+                                                    </button>
+                                                </NavLink>
+                                            ) : (
+                                                <button className="button -salmon" onClick={added}>
+                                                    Add To Cart <i class="fa-solid fa-cart-shopping"></i>
+                                                </button>
+                                            )
+                                        }
+                                    </>) : (
+                                        <button className='button -salmon'
+                                            onClick={() => {
+                                                toast.warning('Please Login ', {
+                                                    position: "top-center",
+                                                    autoClose: 2000,
+                                                    theme: "light",
+                                                })
+                                            }}
+                                        >
                                             Add to Cart
                                         </button>
                                     )
@@ -74,7 +99,7 @@ const Product = () => {
                             </div>
                         </div>
                     </div>
-                </section>
+                </section >
                 <ToastContainer />
             </>
         );

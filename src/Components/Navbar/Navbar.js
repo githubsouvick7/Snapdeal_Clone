@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import { HiOutlineBars3BottomRight } from "react-icons/hi2";
 import { RxCross2 } from "react-icons/rx";
 import { FiUserPlus } from "react-icons/fi";
-import { BiLogIn } from "react-icons/bi";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import './Navbar.css'
@@ -18,19 +17,6 @@ const Header = () => {
     const context = useContext(CartContext);
     console.log(context);
 
-    // useEffect(() => {
-    //     let timer = setTimeout(() => {
-    //         const filterProduct = (e) => {
-    //             console.log(searchValue);
-    //             const filterData = context.filter.filter((item, idx) => {
-    //                 return item.title.toLowerCase().includes(searchValue.toLowerCase());
-    //             });
-    //             context.setData(filterData);
-    //         }
-    //     }, 2000);
-    //     return (() => clearTimeout(timer))
-    // }, [searchValue])
-
     useEffect(() => {
         let timer = setTimeout(() => {
             const filterProduct = context.filter.filter(
@@ -45,7 +31,6 @@ const Header = () => {
 
         return () => clearTimeout(timer);
     }, [searchValue]);
-
 
     return (
         <div className="header" >
@@ -78,7 +63,9 @@ const Header = () => {
                         {
                             isAuthenticated ?
                                 (<>
-                                    <button className='button -salmon' onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>
+                                    <button className='button -salmon' onClick={() =>
+                                        logout({ logoutParams: { returnTo: window.location.origin } })
+                                    }>
                                         <FiUserPlus /><p style={{ marginLeft: "10px" }}>Logout</p>
                                     </button>
                                     <div className="setuser-data">
@@ -94,16 +81,16 @@ const Header = () => {
                 </div>
             </div>
             <div className="signin-up">
-                <NavLink to={'/cart'} style={{ textDecoration: "none" }}>
-                    <button className="set-cart">
-                        <p style={{ marginRight: "10px" }}>Cart</p>
-                        <img width={25} src="https://www.freepnglogos.com/uploads/shopping-cart-png/shopping-cart-svg-png-icon-download-28.png" alt="" />
-                        <div className="p">{state.length}</div>
-                    </button>
-                </NavLink>
                 {
                     isAuthenticated ?
                         (<>
+                            <NavLink to={'/cart'} style={{ textDecoration: "none" }}>
+                                <button className="set-cart">
+                                    <p style={{ marginRight: "10px" }}>Cart</p>
+                                    <img width={25} src="https://www.freepnglogos.com/uploads/shopping-cart-png/shopping-cart-svg-png-icon-download-28.png" alt="" />
+                                    <div className="p">{state.length}</div>
+                                </button>
+                            </NavLink>
                             <button className='button -salmon' onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>
                                 <FiUserPlus /><p style={{ marginLeft: "10px" }}>Logout</p>
                             </button>
