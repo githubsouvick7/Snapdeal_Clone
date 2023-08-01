@@ -15,6 +15,8 @@ const Cart = () => {
     const dispatch = useDispatch();
     const [totalPrice, setTotalPrice] = useState(0);
 
+    console.log(state)
+
     useEffect(() => {
         let count = 0;
         state.map((i) => {
@@ -52,7 +54,7 @@ const Cart = () => {
                                             <img src={item.image} alt="snapdeal" style={{ marginRight: "15px" }} />
                                             <div className="desccomp">
                                                 <p>{item.title}</p>
-                                                <p>Rating : {item.rating.rate}</p>
+                                                {/* <p>Rating : {item.rating.rate}</p> */}
                                                 <select name="Size" id="size">
                                                     <option value="">Select Size</option>
                                                     <option value="">S</option>
