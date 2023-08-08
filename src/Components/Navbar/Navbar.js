@@ -55,7 +55,7 @@ const Header = () => {
                                 <li>Home</li>
                             </NavLink>
                             <NavLink to={'/allproduct'} activeClassName="abc" >
-                                <li>Product</li>
+                                <li>Products</li>
                             </NavLink>
                         </ul>
                     </div>

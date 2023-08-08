@@ -29,7 +29,7 @@ const Timer = ({ initialTimeInSeconds }) => {
             }}
         >
             {timeRemaining > 0 ? (
-                <p style={{ fontSize: '24px' }}>{`Offer ends on ${addLeadingZero(hours)}:${addLeadingZero(minutes)}:${addLeadingZero(seconds)}`}</p>
+                <p style={{ fontSize: '24px' }}>{`Offer ends in ${addLeadingZero(hours)}:${addLeadingZero(minutes)}:${addLeadingZero(seconds)}`}</p>
             ) : (
                 "Time is up!"
             )}

@@ -38,17 +38,7 @@ const Product = () => {
         getProduct(`${api}/${id}`);
     }, []);
 
-
-
     const ShowProduct = () => {
-        // const added = (i) => {
-        //     addProduct(i);
-        //     toast.success("Added . . .", {
-        //         position: "top-center",
-        //         autoClose: 2000,
-        //         theme: "light",
-        //     })
-        // }
         return (
             <>
                 <section className="comp-section" key={product.id}>
