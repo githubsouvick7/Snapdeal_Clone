@@ -23,7 +23,7 @@ const Productpage = ({ product }) => {
                         numberOfStars={5}
                         name="rating"
                     />
-                    <p>{product.rating.count} Ratings</p>
+                    <p style={{ fontSize: "14px" }}>{product.rating.count} Ratings</p>
                 </div>
                 <div className="check">
                     <NavLink style={{ textDecoration: "none" }} to={`/product/${product.id}`}>

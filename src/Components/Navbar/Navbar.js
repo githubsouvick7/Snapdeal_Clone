@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { HiOutlineBars3BottomRight } from "react-icons/hi2";
 import { RxCross2 } from "react-icons/rx";
 import { FiUserPlus } from "react-icons/fi";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import './Navbar.css'
 import { useAuth0 } from "@auth0/auth0-react";
@@ -15,22 +15,20 @@ const Header = () => {
     const state = useSelector((state) => state.handleCart);
     const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0();
     const context = useContext(CartContext);
-    console.log(context);
+    // console.log(context);
+    const navigation = useNavigate();
 
-    useEffect(() => {
-        let timer = setTimeout(() => {
-            const filterProduct = context.filter.filter(
-                (ele) =>
-                    ele.title.toLowerCase().includes(searchValue.toLowerCase()) ||
-                    ele.description.toLowerCase().includes(searchValue.toLowerCase())
-            );
 
-            console.log(filterProduct)
-            context.setData(filterProduct);
-        }, 500);
-
-        return () => clearTimeout(timer);
-    }, [searchValue]);
+    const handleSearchQuary = () => {
+        navigation('/allproduct')
+        const filterProduct = context.filter.filter(
+            (ele) =>
+                ele.title.toLowerCase().includes(searchValue.toLowerCase()) ||
+                ele.description.toLowerCase().includes(searchValue.toLowerCase())
+        );
+        console.log(filterProduct)
+        context.setData(filterProduct);
+    }
 
     return (
         <div className="header" >
@@ -48,6 +46,9 @@ const Header = () => {
                             value={searchValue}
                             onChange={(e) => setSearchValue(e.target.value)}
                         />
+                        <div>
+                            <button onClick={handleSearchQuary} className="button -salmon">Search</button>
+                        </div>
                     </div>
                     <div className="option-three">
                         <ul>
@@ -106,22 +107,33 @@ const Header = () => {
             </div>
 
             <div className="mobile-menu">
-                <div>
-                    <button className="set-cart1">
-                        <NavLink to={'/cart'} style={{ textDecoration: "none" }}>
-                            <img width={25} src="https://www.freepnglogos.com/uploads/shopping-cart-png/shopping-cart-svg-png-icon-download-28.png" alt="" />
-                            <div className="p">{state.length}</div>
-                        </NavLink>
-                    </button>
-                </div>
-
-                <div style={{ marginTop: '8px' }} onClick={handleClick}>
-                    {click ? (
-                        <RxCross2 />
-                    ) : (
-                        <HiOutlineBars3BottomRight />
-                    )}
-                </div>
+                {
+                    isAuthenticated ? <>
+                        <div className="menu-item">
+                            <button className="set-cart1">
+                                <NavLink to={'/cart'} style={{ textDecoration: "none" }}>
+                                    <img width={25} src="https://www.freepnglogos.com/uploads/shopping-cart-png/shopping-cart-svg-png-icon-download-28.png" alt="" />
+                                    <div className="p">{state.length}</div>
+                                </NavLink>
+                            </button>
+                        </div>
+                        <div style={{ marginTop: '8px' }} onClick={handleClick}>
+                            {click ? (
+                                <RxCross2 />
+                            ) : (
+                                <HiOutlineBars3BottomRight />
+                            )}
+                        </div>
+                    </> : <>
+                        <div style={{ marginTop: '8px' }} onClick={handleClick}>
+                            {click ? (
+                                <RxCross2 />
+                            ) : (
+                                <HiOutlineBars3BottomRight />
+                            )}
+                        </div>
+                    </>
+                }
             </div>
         </div>
     );

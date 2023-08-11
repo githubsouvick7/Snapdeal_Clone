@@ -28,6 +28,9 @@
     overflow: scroll;
 }
 
+.cart-discomp {
+    width: 60%;
+}
 
 .onecomp {
     width: 90%;
@@ -41,12 +44,12 @@
 }
 
 .onecomp img {
-    width: 150px;
+    width: 180px;
     height: 150px;
 }
 
 .desccomp {
-    width: 50%;
+    width: 90%;
 }
 
 .dele {
@@ -114,7 +117,7 @@
     align-items: center;
     justify-content: space-between;
     height: 50px;
-    width: 150px;
+    width: 220px;
 }
 
 .count button {
@@ -145,9 +148,9 @@
 }
 
 .cart-btn {
-    width: 60%;
+    width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
 }
 
@@ -172,19 +175,27 @@
         justify-content: start;
     }
 
+    .cart-discomp {
+        width: 90%;
+    }
+
+    .onecomp img {
+        width: 100px;
+        height: 100px;
+    }
+
     .cart-wrap {
         width: 100%;
     }
 
     .onecomp {
-        flex-direction: column;
         align-items: center;
         width: 95%;
     }
 
     .desccomp {
-        width: 80%;
-        color: #e40046;
+        width: 100%;
+        font-size: 12px;
     }
 
     .cartpage {
@@ -206,16 +217,19 @@
     .cart-btn {
         width: 100%;
         justify-content: space-around;
-        flex-direction: column-reverse;
     }
 
     .btn-left-side {
         display: flex;
-        width: 100%;
+        width: 50%;
+    }
+
+    .btn-right-side {
+        width: 50%;
     }
 
     .btn-right-side p {
-        font-size: 24px;
+        font-size: 18px;
         color: red;
     }
 
